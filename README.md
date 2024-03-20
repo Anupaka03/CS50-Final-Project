@@ -1,0 +1,81 @@
+# CS50 Bakery
+
+## Video Demo:  <https://youtu.be/D_2Qnz3kBXI>
+
+## How I got this Idea:
+I chose to do this as my final project from the inspiration of the Finance Problem Set.
+
+## Description:
+This project is a web- based application that uses Python, SQL, Flask, HTML and even some Javascript.This web based application is for both the customer as well as the baker.Using this application:
+- Customers can order the bakery items through the website by logging into it and placing their order.
+- The Baker can add the baked items into the menu and can also view all the orders placed by the customers.
+
+### How the Application works:
+As soon as the website is opened the user is asked to select his role i.e whether he is a customer or a chef(baker).Once the user
+- logs in as the chef by typing in the fixed username and password provided to him:
+    - He can view the page i.e Menu in which he can add the baked items into the menu.He can also update the name, price, quantity of the item already inserted and can also delete any item from the menu.Incase he is in a rush and adds an item that he had already added to the menu, that quantity is updated in the same row in the menu,(instead of another row of the same item) only if he had entered the same price as before or else it displays an error message.
+    - He can also view all the orders placed by the customers when he clicks on the Orders Placed at the top of the page
+    - After completing everything he can log out from the website.
+- logs in as the customer by either entering his username and password if he has an account or by registering for a new account:
+    - He can view the menu which has the details of all the items added by the chef- The name and price.All the changes done to the items by the chef be it - updating, deleting, or inserting is reflected in the menu which the customer views.The customer can order the item by entering the quantity and adding it to the cart.
+    - He can look at all of the items he added to the cart in Your Orders.
+        - He can also update the quantity of the items he added to the cart in the Your Orders page.He can change the quantity by increasing it or decreasing it from it's original value, which results in the changes in the quantity of the product in the menu, the updation of the customer's total amount and his remaining cash in his wallet.
+        - He can also delete any order from his orders resulting in the consequent changes in the total amount ,his cash in his wallet and the quanitity in the menu.
+        - After ordering and updating whatever he wants, the cutomer can Generate his Bill and can view his bill.
+    - The wallet of every customer has a default of ₹1,000.He can recharge this amount whenever he wants.
+    - Incase the prices of items the customer ordered exceeds the cash in his wallet, he is redirected to his wallet page, where he can view the amount he has in his wallet and add the amount to recharge his wallet.
+    - After completing whatever he wants to do, the customer can logout from his account.
+
+After logging out as the customer/chef(i.e baker) the select role page is displayed.
+
+This web application can be viewed in many other languages, using Google Translate, by selecting the required language from the top left hand side of every page.
+
+In the cases where the user doesn't enter valid information, skips entering any info, entering wrong info, not entering correct passwords ,usernames and so on , the picture of a cat along with an error message is displayed indicating the user.
+
+### Description About the Code:
+The main part of the code is in app.py , which has various routes.
+
+Another python file helpers.py which contains funtions like apologyc, apology, apology1, usd, login_required.All these functions are imported and used in app.py.The function apologyc, apology, apology1 are all used to display a cat picture with an error message incase the user enters any invalid information or leaves any field blank.The funciton usd converts the money to indian ruppees.The function login_required decorates the routes to require login.
+
+The static folder contains the CSS of the project, the templates folder contains all the HTML files which is used in app.py.
+
+cafeteria.db is the SQL database containing all the tables used in this web app.cafeteria.db contains the employee table, chef table, items table, orders table, and the bill table.The employeee table keeps the record of all the customers logged in containing their username, password hash and their cash.The chef table stores the fixed username and password of the chef(baker).The items table holds the information about the items added in the menu by the chef like their item name, price and the quantity available.The orders table contains the information about the items added by customers to their cart like the item name, price, quantity added, quantity left and the net price of the item.The bill table has all the bills generated by the customers.
+
+As soon as the website is opened the "/" route is activated which renders the first.html page asking the user to select his role i.e Chef(Baker) or Customer.
+
+#### Chef(Baker)
+##### loginch
+This function logs in the chef when he enters the correct username and password.
+##### logout
+This function logs out the chef from his account.
+##### Chefpage,update,delete
+These function displays the information regarding all the items that the chef has added to the menu.It also enables the chef to add more items to his menu, update any of the items already added or delete any item.
+##### Cheforder
+This function displays all the orders placed by the customer to chef.
+#### Customer
+##### create_account
+This function allows the customer to create an account if he does not have one.
+##### login
+This function allows the customer to login in to his account with his username and password.
+##### logout
+This function logs out the customer from his account.
+##### menu,placeorder
+These functions display the menu of the items available and allows the customer to order the required quantities of the specific item and add it to the cart.
+##### order,updateorder,deleteorder,bill
+These functions diplays the cart of the customer and also provides the customer options to update the quantity of any item and delete any item.After adding everything, the customer can click in the Generate Bill to place his order and generate the bill.
+##### wallet
+This function shows the customer the amount he has in his wallet and also gives the customer an option to recharge his wallet with the required amount.(This needs to be integrated with third party payment services.)
+
+
+
+
+
+
+
+
+
+
+
+
+
+

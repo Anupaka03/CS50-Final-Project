@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Your Bill
+{% endblock %}
+
+{% block main %}
+        <main class="container-fluid py-5 text-center">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="text-start">Item</th>
+                        <th class="text-start">Price</th>
+                        <th class="text-end">Quantity</th>
+                        <th class="text-end">Net amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for infos in bill %}
+                        <tr>
+                            <td class="text-start">{{ infos.item }}</td>
+                            <td class="text-start">{{ infos.price }}</td>
+                            <td class="text-end">{{ infos.qty  }}</td>
+                            <td class="text-end">{{ infos.net  }}</td>
+                       </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td class="border-0 fw-bold text-end" colspan="4">Total Amount</td>
+                        <td class="border-0 text-end">{{ net }}</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </main>
+{% endblock %}
+
+

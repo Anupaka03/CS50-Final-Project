@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Menu
+{% endblock %}
+
+{% block main %}
+
+<main class="container-fluid py-5 text-center">
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="text-start">Item</th>
+                <th class="text-start">Price</th>
+                <th class="text-end">Quantity</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for infos in info %}
+                <tr>
+                    <!--<tr>
+                        <td colspan=3>January</td>
+                    </tr>-->
+                    <td class="text-start">{{ infos.item }}</td>
+                    <td class="text-start">{{ infos.price }}</td>
+                    <td class="text-end">{{ infos.quantity }}</td>
+                    <td>
+                        <form action="/placeorder" method="post">
+                            <input name="order.{{ infos.item }}" type="number" min="1" max="{{infos.quantity}}" placeholder="Quantity">
+                            <button class="btn btn-primary" type="submit">Add to cart</button>
+                        </form>
+                    </td>
+               </tr>
+            {% endfor %}
+
+        </tbody>
+{% endblock %}

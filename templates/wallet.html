@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Your Wallet
+{% endblock %}
+
+{% block main %}
+
+<main class="container-fluid py-5 text-center">
+    <p>You have ₹{{ cash }} in your wallet</p>
+    <form action="/wallet" method="post">
+        <input autocomplete="off" name="acash" type="text" placeholder="Enter the cash you would like to add">
+        <button class="btn btn-primary" type="submit">Add cash</button>
+    </form>
+</main>
+
+
+{% endblock %}
